@@ -5,10 +5,11 @@ const Detail = (props) => {
     const [product, setProduct] = useState({});
 
     useEffect(() => {
-        axios.get("http://localhost8000/api/products/" + props.id)
+        axios.get("http://localhost:8000/api/products/" + props.id)
             .then(res => setProduct({
                 ...res.data
             }))
+            .catch(err => console.log(err))
     }, [props.id])
     return (
         <div>
