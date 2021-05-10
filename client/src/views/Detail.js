@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import axios from 'axios';
-import {Link} from '@reach/router';
+import {navigate} from '@reach/router';
+import DeleteButton from '../components/DeleteButton';
 
 const Detail = (props) => {
     const [product, setProduct] = useState({});
@@ -30,9 +31,10 @@ const Detail = (props) => {
             <h1>{product.title}</h1>
             <p>Price: ${product.price}</p>
             <p>Description: {product.description}</p>
-            <Link to={"/products"} onClick={(e)=>{deleteProduct(product._id)}}>
-                Delete
-            </Link>
+            <DeleteButton 
+                        productId={product._id} 
+                        successCallback={() => navigate('/products/')}
+                    />
         </div>
     )
 }
